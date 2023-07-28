@@ -1,0 +1,19 @@
+# Ignore Node.js modules
+# node_modules/
+
+
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore any files or directories you don't want to track
+# For example, if you have sensitive information in a config file, add it here
+# config.ini
+
+# Ignore any build artifacts or generated files
+# build/
+# dist/
+# out/
