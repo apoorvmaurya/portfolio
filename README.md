@@ -38,8 +38,8 @@ The portfolio website is a single-page application that serves as a showcase of 
 ## Installation
 
 1. Clone the repository to your local machine using the following command:
-```shell
-git clone https://github.com/apoorvmaurya/Portfolio
+   ```shell
+   git clone https://github.com/apoorvmaurya/Portfolio
 
 
 ## Contributing
