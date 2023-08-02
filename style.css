@@ -469,6 +469,48 @@ body::selection {
   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
+/* Add this CSS to hide the main section initially */
+main {
+  display: none;
+}
+
+/* Animation for elements entering from the left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation for elements entering from the right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation for elements entering from the center */
+@keyframes fadeInCenter {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
 .poster {
   position: relative;
   top: 0;
