@@ -469,48 +469,6 @@ body::selection {
   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
-/* Add this CSS to hide the main section initially */
-main {
-  display: none;
-}
-
-/* Animation for elements entering from the left */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Animation for elements entering from the right */
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Animation for elements entering from the center */
-@keyframes fadeInCenter {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-
 .poster {
   position: relative;
   top: 0;
@@ -613,6 +571,62 @@ main {
   margin-bottom: 1em;
 }
 
+.animate-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.animate-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add this to your style.css file */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-introduction {
+  animation: fadeInUp 1s both;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-main {
+  animation: slideInLeft 1s both;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-footer {
+  animation: slideInUp 1s both;
+}
 
 /* ----------FOOTER---------- */
 #footer {
@@ -823,6 +837,40 @@ main {
 .social-icons a:nth-child(6) i:hover {
   color: #3b5998;
 }
+
+/* Keyframes for fading in from left */
+@keyframes fadeInFromLeft {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+/* Keyframes for popping in from the center */
+@keyframes popInFromCenter {
+  from {
+      transform: scale(0);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+/* Apply the animations to the respective sections */
+.animate-left {
+  animation: fadeInFromLeft 1s ease-in-out forwards;
+}
+
+.animate-center {
+  animation: popInFromCenter 1s ease-in-out forwards;
+}
+
 
 /*-----Responsiveness-----
 

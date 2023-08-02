@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <section id="header">
+    <section id="header" class="animate-left">
         <div class="navbar-title">
             <h3 class="title-first-name">
                 < Apoorv
@@ -46,7 +46,7 @@
             </ul>
         </div>
     </section>
-    <section id="content-body">
+    <section id="content-body" class="animate-center">
         <div class="body-part-2">
             <div class="hoodie-guy"></div>
             <div class="background-circle"></div>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </section>
-    <section id="introduction">
+    <section id="introduction" class="animate-section">
         <div class="cards">
             <div class="design-card active">
                 <div>
@@ -111,7 +111,7 @@
             <p>As a Graphic Designer,  I am a master of innovative ideas and boundless creativity, crafting visually captivating designs that leave a lasting impact. With a passion for pushing boundaries, I bring sleek modern aesthetics and timeless classics to life, ensuring every project is a masterpiece of design excellence. Join me on this enthralling journey where imagination knows no limits.</p>
         </div>
     </section>
-    <main>
+    <main class="animate-section">
         <h1 style="text-align: center;">My Projects</h1>
         <div class="wrapper">
             <div class="card">
@@ -176,7 +176,7 @@
             </div>
         </div>
     </main>
-    <section id="footer">
+    <section id="footer" class="animate-section">
         <div class="footer-left">
             <h2>< Contribution /><br>Let's make something amazing together...!!!</h2>
 
@@ -225,6 +225,33 @@
         </div>
     </section>
     <script src="script.js"></script>
+    <!-- Add this script at the end of your HTML body, just before the closing </body> tag. -->
+<script>
+    const animateSectionElements = document.querySelectorAll('.animate-section');
+  
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2, // Adjust this threshold based on when you want the animation to start
+    };
+  
+    function handleIntersection(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing once the element is visible
+        }
+      });
+    }
+  
+    // Create the Intersection Observer and start observing the elements
+    const animateObserver = new IntersectionObserver(handleIntersection, observerOptions);
+  
+    animateSectionElements.forEach(element => {
+      animateObserver.observe(element);
+    });
+  </script>
+   
 </body>
 
 </html>
