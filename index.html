@@ -225,31 +225,48 @@
         </div>
     </section>
     <script src="script.js"></script>
-    <!-- Add this script at the end of your HTML body, just before the closing </body> tag. -->
 <script>
     const animateSectionElements = document.querySelectorAll('.animate-section');
   
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.2, // Adjust this threshold based on when you want the animation to start
+      threshold: 0.2,
     };
   
     function handleIntersection(entries, observer) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Stop observing once the element is visible
+          observer.unobserve(entry.target);
         }
       });
     }
-  
-    // Create the Intersection Observer and start observing the elements
+
     const animateObserver = new IntersectionObserver(handleIntersection, observerOptions);
   
     animateSectionElements.forEach(element => {
       animateObserver.observe(element);
     });
+
+    document.querySelector('form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const response = await fetch('/send-message', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(Object.fromEntries(formData)),
+        });
+        if (response.ok) {
+          alert('Message sent successfully!');
+          event.target.reset();
+        } else {
+          alert('Failed to send message. Please try again later.');
+        }
+      });
+      
   </script>
    
 </body>
