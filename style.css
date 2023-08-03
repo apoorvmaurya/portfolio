@@ -542,13 +542,6 @@ body::selection {
   opacity: .6;
 }
 
-.details .rating {
-  position: relative;
-  margin-bottom: 15px;
-  display: flex;
-  gap: .25em;
-}
-
 .details .tags {
   display: flex;
   gap: .375em;
