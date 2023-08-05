@@ -1,19 +1,26 @@
-# Ignore Node.js modules
-# node_modules/
+# Ignore Node.js build artifacts
+node_modules/
+npm-debug.log
+yarn-error.log
 
+# Ignore log files and other generated files
+*.log
+*.log.*
+*.txt
 
-
-# Ignore IDE and editor files
+# Ignore OS and editor-generated files
+.DS_Store
+Thumbs.db
 .vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
+*.swp
 
-# Ignore any files or directories you don't want to track
-# For example, if you have sensitive information in a config file, add it here
-# config.ini
+# Ignore environment-specific files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Ignore any build artifacts or generated files
-# build/
-# dist/
-# out/
+# Ignore dependencies
+package-lock.json
+yarn.lock
