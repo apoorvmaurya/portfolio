@@ -53,3 +53,31 @@ const observer = new IntersectionObserver(animateElements, { threshold: 0.2 });
 // Observe all the elements with the 'animate' class
 const animateElementsList = document.querySelectorAll('.animate');
 animateElementsList.forEach(element => observer.observe(element));
+
+document.getElementById('footer').addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const jsonData = {};
+
+  formData.forEach((value, key) => {
+    jsonData[key] = value;
+  });
+
+  fetch('/send-message', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jsonData),
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      document.getElementById('messageStatus').textContent = message;
+    })
+    .catch((error) => {
+      console.error(error);
+      document.getElementById('messageStatus').textContent =
+        'Failed to send the message. Please try again later.';
+    });
+});

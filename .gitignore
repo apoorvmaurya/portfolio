@@ -1,7 +1,7 @@
 # Ignore Node.js modules
-# node_modules/
+ node_modules/
 
-
+.env
 
 # Ignore IDE and editor files
 .vscode/

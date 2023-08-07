@@ -1,48 +1,44 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const twilio = require('twilio');
+
 const app = express();
-const port = 3000; // Change this to your desired port number or 5500 for VS Code Live Server
+const port = 5500;
 
-app.use(express.json());
+const accountSid = '';
+const authToken = '';
+const client = twilio(accountSid, authToken);
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Serve static files from the same directory as server.js
+app.use(express.static(__dirname));
+
+// Endpoint to handle incoming user data and send the WhatsApp message
 app.post('/send-message', (req, res) => {
-  const { name, email, phoneNumber, message } = req.body;
+  const { name, phone, email, message } = req.body;
+  const toPhoneNumber = '+917081817800'; // Replace with your WhatsApp number (Twilio verified phone number)
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'your-gmail-username', // Replace with your Gmail username
-      pass: 'your-gmail-password', // Replace with your Gmail password
-    },
-  });
+  const textMessage = `New message from ${name} (${email}) no.${phone} : ${message}`;
 
-  // Email message options
-  const mailOptions = {
-    from: 'your-gmail-username', // Replace with your Gmail username (same as above)
-    to: 'your-email-address@example.com', // Replace with your email address where you want to receive messages
-    subject: 'New Message from Portfolio Contact Form',
-    html: `
-      <h3>Name: ${name}</h3>
-      <h3>Email: ${email}</h3>
-      <h3>Phone Number: ${phoneNumber}</h3>
-      <p>${message}</p>
-    `,
-  };
-
-  // Send the email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send('Failed to send message');
-    } else {
-      console.log('Email sent: ' + info.response);
-      res.status(200).send('Message sent successfully');
-    }
-  });
+  // Use Twilio to send a WhatsApp message
+  client.messages
+    .create({
+      body: textMessage,
+      from: 'whatsapp:+14155238886', // This is the Twilio sandbox WhatsApp number
+      to: `whatsapp:${toPhoneNumber}`,
+    })
+    .then((message) => {
+      console.log(message.sid); // Log Twilio response SID to the console
+      res.send('Message sent successfully!');
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Failed to send the message.');
+    });
 });
 
-// Start the server
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });

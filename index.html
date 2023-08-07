@@ -179,16 +179,19 @@
     <section id="footer" class="animate-section">
         <div class="footer-left">
             <h2>< Contribution /><br>Let's make something amazing together...!!!</h2>
-
+            <form id="messageForm">
             <div class="email-form">
                 <h2>Start by <span>saying hi</span></h2>
                 <input type="text" name="name" id="" placeholder="Your name">
                 <input type="email" name="email" id="" placeholder="Email Address">
                 <div>
-                    <input type="number" name="phone-number" id="" placeholder="Phone number">
+                    <input type="number" name="phone" id="" placeholder="Phone number">
                     <button type="submit">Send</button>
+                    <div class="messageStatus"></div>
                 </div>
+                <input type="text" name="message" id="" placeholder="message">
             </div>
+        </form>
 
             <div class="footer-title">
                 <h3 class="title-first-name">
@@ -248,24 +251,6 @@
     animateSectionElements.forEach(element => {
       animateObserver.observe(element);
     });
-
-    document.querySelector('form').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const response = await fetch('/send-message', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(Object.fromEntries(formData)),
-        });
-        if (response.ok) {
-          alert('Message sent successfully!');
-          event.target.reset();
-        } else {
-          alert('Failed to send message. Please try again later.');
-        }
-      });
       
   </script>
    
