@@ -4,7 +4,7 @@ This is a repository for my personal portfolio website. The website showcases my
 
 ## Live Website
 
-The live version of the portfolio website can be accessed [here](https://www.your-portfolio-website.com).
+The live version of the portfolio website can be accessed [here](https://apoorvmaurya.github.io/p0rtfolio).
 
 ## Table of Contents
 
@@ -39,7 +39,7 @@ The portfolio website is a single-page application that serves as a showcase of 
 
 1. Clone the repository to your local machine using the following command:
    ```shell
-   git clone https://github.com/apoorvmaurya/Portfolio
+   git clone https://github.com/apoorvmaurya/portfolio
 
 
 ## Contributing
