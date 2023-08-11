@@ -48,11 +48,73 @@ function animateElements() {
 }
 
 // Create the Intersection Observer
-const observer = new IntersectionObserver(animateElements, { threshold: 0.2 });
+document.addEventListener('DOMContentLoaded', function () {
+  const navigationLinks = document.querySelectorAll('.navbar-menu a');
+  const contentBodySection = document.getElementById('content-body');
+  const introductionSection = document.getElementById('introduction');
+  const projectsSection = document.getElementById('projects');
+  const footerSection = document.getElementById('footer');
+
+  function handleIntersection(entries) {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const targetId = entry.target.id;
+              navigationLinks.forEach(link => {
+                  link.classList.remove('active');
+                  if (link.getAttribute('href') === `#${targetId}`) {
+                      link.classList.add('active');
+                  }
+              });
+          }
+      });
+  }
+
+  const animateObserver = new IntersectionObserver(handleIntersection, { threshold: 0.2 });
+  animateObserver.observe(contentBodySection);
+  animateObserver.observe(introductionSection);
+  animateObserver.observe(projectsSection);
+  animateObserver.observe(footerSection);
+
+  navigationLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+          event.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+      });
+  });
+});
+
 
 // Observe all the elements with the 'animate' class
 const animateElementsList = document.querySelectorAll('.animate');
 animateElementsList.forEach(element => observer.observe(element));
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const navigationLinks = document.querySelectorAll('.navbar-menu a');
+  const introductionSection = document.getElementById('introduction');
+  const contactsSection = document.getElementById('footer');
+
+  navigationLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+          event.preventDefault();
+          
+          // Remove active class from all links
+          navigationLinks.forEach(link => link.classList.remove('active'));
+          
+          // Add active class to the clicked link
+          link.classList.add('active');
+          
+          // Scroll to the corresponding section
+          if (link.getAttribute('href') === '#introduction') {
+              introductionSection.scrollIntoView({ behavior: 'smooth' });
+          } else if (link.getAttribute('href') === '#footer') {
+              contactsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+      });
+  });
+});
 
 document.getElementById('footer').addEventListener('submit', (event) => {
   event.preventDefault();
