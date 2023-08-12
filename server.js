@@ -18,7 +18,7 @@ app.use(express.static(__dirname));
 // Endpoint to handle incoming user data and send the WhatsApp message
 app.post('/send-message', (req, res) => {
   const { name, phone, email, message } = req.body;
-  const toPhoneNumber = '+917081817800'; // Replace with your WhatsApp number (Twilio verified phone number)
+  const toPhoneNumber = ''; // Replace with your WhatsApp number (Twilio verified phone number)
 
   const textMessage = `New message from ${name} (${email}) no.${phone} : ${message}`;
 
