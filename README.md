@@ -1,10 +1,11 @@
-# Portfolio Website
+![](https://iili.io/HZQmPrg.png)
+<h1 align="center">My Portfolio</h1>
 
 This is a repository for my personal portfolio website. The website showcases my projects, skills, and experiences. It is designed to highlight my work and provide an overview of my abilities as a developer/designer.
 
 ## Live Website
 
-The live version of the portfolio website can be accessed [here](https://apoorvmaurya.github.io/p0rtfolio).
+The live version of the portfolio website can be accessed [here](https://apoorv.onrender.com).
 
 ## Table of Contents
 
@@ -12,7 +13,6 @@ The live version of the portfolio website can be accessed [here](https://apoorvm
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -34,6 +34,7 @@ The portfolio website is a single-page application that serves as a showcase of 
 - HTML
 - CSS
 - JavaScript
+- NodeJS
 
 ## Installation
 
